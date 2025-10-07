@@ -1,0 +1,18 @@
+﻿  Building 'FileLogger' with toolset 'WindowsKernelModeDriver10.0' and the 'Desktop' target platform.
+  Stamping x64\Release\FileLogger.inf
+  Stamping [Version] section with DriverVer=10/02/2025,0.1.14.508
+  FileLogger.vcxproj -> C:\Users\manas\Desktop\Tasks\MinifilterDriverDevelopment\Logger\FileLogger\x64\Release\FileLogger.sys
+  .........................
+  Signability test complete.
+  
+  Errors:
+  None
+  
+  Warnings:
+  None
+  
+  Catalog generation complete.
+  C:\Users\manas\Desktop\Tasks\MinifilterDriverDevelopment\Logger\FileLogger\x64\Release\FileLogger\filelogger.cat
+  Done Adding Additional Store
+  Successfully signed: C:\Users\manas\Desktop\Tasks\MinifilterDriverDevelopment\Logger\FileLogger\x64\Release\FileLogger\filelogger.cat
+  

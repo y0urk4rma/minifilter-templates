@@ -1,0 +1,94 @@
+;
+; FileLogger.inf
+;
+
+[Version]
+Signature   = "$Windows NT$"
+Class       = "ActivityMonitor"
+ClassGuid   = {b86dff51-a31e-4bac-b3cf-e8cfe75c9fc2}
+Provider    = %ManufacturerName%
+DriverVer = 10/01/2025,23.54.9.49
+CatalogFile = FileLogger.cat
+PnpLockDown = 1
+
+[DestinationDirs]
+DefaultDestDir              = 12
+MiniFilter.DriverFiles      = 12            ;%windir%\system32\drivers
+MiniFilter.DeleteDriverFiles = 12
+
+[SourceDisksNames]
+1 = %DiskId1%,,,""
+
+[SourceDisksFiles]
+FileLogger.sys  = 1,,
+
+;;
+;; Default install sections
+;;
+
+[DefaultInstall.NTamd64]
+OptionDesc          = %ServiceDescription%
+CopyFiles           = MiniFilter.DriverFiles
+
+[DefaultInstall.NTamd64.Services]
+AddService          = %ServiceName%,,MiniFilter.Service
+
+;;
+;; Default uninstall sections
+;;
+
+[DefaultUninstall.NTamd64]
+LegacyUninstall = 1
+DelFiles   = MiniFilter.DeleteDriverFiles
+
+[DefaultUninstall.NTamd64.Services]
+DelService = %ServiceName%,0x200      ;Ensure service is stopped before deleting
+
+;
+; Services Section
+;
+
+[MiniFilter.Service]
+DisplayName      = %ServiceName%
+Description      = %ServiceDescription%
+ServiceBinary    = %12%\%DriverName%.sys
+Dependencies     = "FltMgr"
+ServiceType      = 2                    ;SERVICE_FILE_SYSTEM_DRIVER
+StartType        = 3                    ;SERVICE_DEMAND_START
+ErrorControl     = 1                    ;SERVICE_ERROR_NORMAL
+LoadOrderGroup   = "FSFilter Activity Monitor"
+AddReg           = MiniFilter.AddRegistry
+
+;
+; Registry Modifications
+;
+
+[MiniFilter.AddRegistry]
+HKR,,"DebugFlags",0x00010001 ,0x0
+HKR,,"SupportedFeatures",0x00010001,0x3
+HKR,"Instances","DefaultInstance",0x00000000,%DefaultInstance%
+HKR,"Instances\"%Instance1.Name%,"Altitude",0x00000000,%Instance1.Altitude%
+HKR,"Instances\"%Instance1.Name%,"Flags",0x00010001,%Instance1.Flags%
+
+;
+; Copy Files
+;
+
+[MiniFilter.DriverFiles]
+%DriverName%.sys
+
+[MiniFilter.DeleteDriverFiles]
+%DriverName%.sys
+
+[Strings]
+ManufacturerName        = "YourCompany"
+ServiceDescription      = "File Logger Mini-Filter Driver"
+ServiceName             = "FileLogger"
+DriverName              = "FileLogger"
+DiskId1                 = "FileLogger Device Installation Disk"
+
+;Instances specific information.
+DefaultInstance         = "FileLogger Instance"
+Instance1.Name          = "FileLogger Instance"
+Instance1.Altitude      = "370030"
+Instance1.Flags         = 0x0

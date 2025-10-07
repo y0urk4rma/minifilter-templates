@@ -1,0 +1,22 @@
+﻿  Building 'FileHider' with toolset 'WindowsKernelModeDriver10.0' and the 'Desktop' target platform.
+  Stamping x64\Release\FileHider.inf
+  Stamping [Version] section with DriverVer=10/02/2025,23.34.13.999
+  driver.cpp
+  FileHider.vcxproj -> C:\Users\manas\Desktop\Tasks\MinifilterDriverDevelopment\Logger\FileHider\x64\Release\FileHider.sys
+  Done Adding Additional Store
+  Successfully signed: C:\Users\manas\Desktop\Tasks\MinifilterDriverDevelopment\Logger\FileHider\x64\Release\FileHider.sys
+  
+  .........................
+  Signability test complete.
+  
+  Errors:
+  None
+  
+  Warnings:
+  None
+  
+  Catalog generation complete.
+  C:\Users\manas\Desktop\Tasks\MinifilterDriverDevelopment\Logger\FileHider\x64\Release\FileHider\filehider.cat
+  Done Adding Additional Store
+  Successfully signed: C:\Users\manas\Desktop\Tasks\MinifilterDriverDevelopment\Logger\FileHider\x64\Release\FileHider\filehider.cat
+  
